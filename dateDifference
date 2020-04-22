@@ -1,0 +1,15 @@
+#a python code that gets your DOB (Date Of Birth) 
+#and return your age in (Years , months, days ) Format
+#For example if your DOB is:  11 Jan 1984 , 
+#the code should return: Your age is 36 years ,  3 months and 11 days.
+#---- if any one have a better code than this Pls to share or reply---
+from datetime import datetime
+DOB = input("Enter your DOB with format like  24/11/1978\n")
+ # Age in days: ddd
+ddd = abs(datetime.now()-(datetime.strptime(DOB, "%d/%m/%Y"))).days
+ # remaining days after getting years: r
+r = ddd % 365.2425  
+y,m = int(ddd//365.2425),int(r//30.436875)
+ # remaining days after getting years and months: d
+d = int(ddd - (y*365.2425 + m*30.436875))
+print("Your age is: %d years, %d months, and %d days"%(y,m,d))
